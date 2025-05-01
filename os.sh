@@ -1,3 +1,6 @@
+#!/bin/bash
+
+# Clear the screen and display a banner
 clear
 echo -e "\e[31m ________    _____   ______       __    __     __    __   __     __  " 
 echo -e "\e[31m(___  ___)  / ___/  (   __ \      \ \  / /     ) )  ( (  (_ \   / _) " 
@@ -6,61 +9,18 @@ echo -e "\e[96m   ( (      ) __)   (    __/      / _  _ \     ) )  ( (     \   /
 echo -e "\e[94m    ) )    ( (       ) \ \  _    / / \/ \ \   ( (    ) )    / _ \    " 
 echo -e "\e[94m   ( (      \ \___  ( ( \ \_))  /_/      \_\   ) \__/ (   _/ / \ \_  " 
 echo -e "\e[92m   /__\      \____\  )_) \__/  (/          \)  \______/  (__/   \__)" 
-                    
-echo -e " \e[91m                                                   ____      _____  " 
-echo -e " \e[91m                                                  / __ \    / ____\ " 
-echo -e " \e[96m                                                 / /  \ \  ( (___   " 
-echo -e " \e[96m                                                ( ()  () )  \___ \  " 
-echo -e " \e[1;91m                     \e[0;31m                 ( ()  () )      ) )" 
-echo -e " \e[1;91m Github\e[96m /\e[1;93m futuretonight          \ \__/ /   ___/ /" 
-echo    "                                                         \____/   /____/"    
+echo -e "\e[91m                                                   ____      _____  " 
+echo -e "\e[91m                                                  / __ \    / ____\ " 
+echo -e "\e[96m                                                 / /  \ \  ( (___   " 
+echo -e "\e[96m                                                ( ()  () )  \___ \  " 
+echo -e "\e[1;91m                     \e[0;31m                 ( ()  () )      ) )" 
+echo -e "\e[1;91m Github\e[96m /\e[1;93m futuretonight          \ \__/ /   ___/ /" 
+echo -e "                                                         \____/   /____/"    
 echo ""
-
-banner ( ) {
-                  
-                  
-                  printf ""
-                  echo -e "\e[1;31m  [\e[32m√\e[31m] \e[1;91m by \e[1;36mRaj Aryan \e[93m/ \e[100;92myoutube.com/h4ck3r0\e[0m"
-                  echo -e "\e[1;31m  [\e[32m√\e[31m] \e[1;91m maintained by \e[1;36mRaj simple \e[93m/ \e[100;92mgithub.com/futuretonight\e[0m"
-                  }
-
-                  wr  ( )  {
-                               printf "\033[1;91m Invalid input!!!\n"
-                               selection
-                               }
-                               1line() {
-                                                         apt update && apt upgrade
-                                                         pkg install zsh -y
-                                                         pkg install git -y
-                                                         pkg install figlet toilet -y
-                                                         pkg install ruby  -y
-                                                         pkg install wget  -y
-                                                       
-                                                         gem install lolcat 
-                                                         pkg install curl -y
-                                                         pkg install zsh -y
-                                                         
-                                                         clear
-                                                         cd ~/Termux-os/.object/ && cp -r 'ANSI Shadow.flf'  $PREFIX/share/figlet/ASCII-Shadow.flf 
-                                                         git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
-                                                       
-                                                         pkg install toilet figlet exa -y
-                                                         cd ~/Termux-os/.object
-                                                         rm -rf ~/.termux/colors.properties
-                                                         rm -rf /data/data/com.termux/files/usr/etc/motd
-                                                         cp -r .colors.properties ~/.termux/colors.properties
-                                                         cp -r .termux.properties ~/.termux/termux.properties
-#!/bin/bash
-
-# ====================
-# Termux-os Installer
-# ====================
-# A script for setting up Termux with a Zsh shell, themes, plugins, and other customizations.
 
 # --------------------
 # Global Variables
 # --------------------
-# Define color codes for better readability
 RED="\e[31m"
 CYAN="\e[96m"
 BLUE="\e[94m"
