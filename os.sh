@@ -50,82 +50,132 @@ banner ( ) {
                                                          rm -rf /data/data/com.termux/files/usr/etc/motd
                                                          cp -r .colors.properties ~/.termux/colors.properties
                                                          cp -r .termux.properties ~/.termux/termux.properties
-                                                         clear
-                                                         cd ~/Termux-os ; bash os.sh
-                                                         termux-open-url h4ck3r.me
-                                                         
-                                                         }
-                                                         2line() {
-                                                                               rm -rf ~/.zshrc
-                                                                               git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
-                                                                               cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-                                                                               cd ~/Termux-os ; bash os.sh
-                                                                                }
-                                                                               3line() {
-                                                                                                 pkg install zsh
-                                                                                                 chsh -s zsh
-                                                                                                 cd ~/Termux-os ; bash os.sh
-                                                                                                  }
-                                                                                                   4line() {
-                                                                                                                         chsh -s bash
-                                                                                                                         cd  ~/Termux-os ; bash os.sh
-                                                                                                                         }
-                                                                                                                         5line() {
-                                                                                                                                              rm -rf ~/.zshrc
-                                                                                                                                              cd ~/Termux-os/.object
-                                                                                                                                              bash  .2.sh
-                                                                                                                                              clear ; cd ~/Termux-os ; bash os.sh
-                                                                                                                                                  }
-                                                                                                                                                 
-                                                                                                                                                6line() {
-                                                                                                                                                                         cd ~/Termux-os/.object
-                                                                                                                                                                         bash .1.sh
-                                                                                                                                                                         clear ; cd ~/Termux-os ; bash os.sh
-                                                                                                                                                                       }
-                                                                                                                                                                       7line() {
-                                                                                                                                                                                                                    cd ~/Termux-os/.object
-                                                                                                                                                                                                                    rm -rf ~/.zshrc
-                                                                                                                                                                                                                    chsh -s zsh
-                                                                                                                                                                                                                    bash .3.sh
-                                                                                                                                                                                                                    clear ; cd ~/Termux-os ; bash os.sh
-                                                                                                                                                                                                                     }
-                                                                                                                                                                                                                     8line() {
-                                                                                                                                                                                                                                  rm -rf ~/Termux-os
-                                                                                                                                                                                                                                  cd
-                                                                                                                                                                                                                                  git clone https://github.com/h4ck3r0/Termux-os
-                                                                                                                                                                                                                                  cd ~/Termux-os ; bash os.sh
-                                                                                                                                                                                                                                  }
-    
-                                 selection () {
-                                            cd ~/Termux-os
-                                            echo -e -n "\e[1;96m Choose\e[1;96m Option : \e[0m"
-                                            read a
-                                            case $a in
-                                            1) 1line ;;
-                                            2) 2line ;;
-                                            3) 3line ;;
-                                            4) 4line ;;
-                                            5) 5line ;;
-                                            6) 6line ;;
-                                            7) 7line ;;
-                                            8) 8line ;;
-                                            9) exit ;;
-                                            *) wr ;;
-                                            esac
-                                            }
+#!/bin/bash
 
-                  menu () {
-                                  banner
-                                  printf "\n\033[1;91m[\033[0m1\033[1;91m]\033[1;92m Necessary Setup \n"
-                                  printf "\033[1;91m[\033[0m2\033[1;91m]\033[1;92m Zsh Setup\n"
-                                  printf "\033[1;91m[\033[0m3\033[1;91m]\033[1;92m Zsh Shell\n"
-                                  printf "\033[1;91m[\033[0m4\033[1;91m]\033[1;92m Bash Shell\n"
-                                  printf "\033[1;91m[\033[0m5\033[1;91m]\033[1;92m Zsh Banner\n"
-                                  printf "\033[1;91m[\033[0m6\033[1;91m]\033[1;92m Zsh Theme\n"
-                                  printf "\033[1;91m[\033[0m7\033[1;91m]\033[1;92m Highlight / AutoSuggest\n"
-                                  printf "\033[1;91m[\033[0m8\033[1;91m]\033[1;92m Update\n"
-                                  printf "\033[1;91m[\033[0m9\033[1;91m]\033[1;92m Exit\n\n\n"
-                                  
-                                  selection
-                                  }
-                  menu
+# ====================
+# Termux-os Installer
+# ====================
+# A script for setting up Termux with a Zsh shell, themes, plugins, and other customizations.
+
+# --------------------
+# Global Variables
+# --------------------
+# Define color codes for better readability
+RED="\e[31m"
+CYAN="\e[96m"
+BLUE="\e[94m"
+GREEN="\e[92m"
+YELLOW="\e[93m"
+WHITE="\e[97m"
+RESET="\e[0m"
+
+# Define directories and files
+TERMUX_DIR="$HOME/.termux"
+OH_MY_ZSH_DIR="$HOME/.oh-my-zsh"
+BACKUP_FILE="$HOME/termux_backup.tar.gz"
+
+# --------------------
+# Functions
+# --------------------
+
+# Display a Banner
+banner() {
+    clear
+    echo -e "${RED} ________    _____   ______       __    __     __    __   __     __  "
+    echo -e "${RED}(___  ___)  / ___/  (   __ \      \ \  / /     ) )  ( (  (_ \   / _) "
+    echo -e "${CYAN}    ) )    ( (__     ) (__) )     () \/ ()    ( (    ) )   \ \_/ /   "
+    echo -e "${CYAN}   ( (      ) __)   (    __/      / _  _ \     ) )  ( (     \   /   "
+    echo -e "${BLUE}    ) )    ( (       ) \ \  _    / / \/ \ \   ( (    ) )    / _ \    "
+    echo -e "${BLUE}   ( (      \ \___  ( ( \ \_))  /_/      \_\   ) \__/ (   _/ / \ \_  "
+    echo -e "${GREEN}   /__\      \____\  )_) \__/  (/          \)  \______/  (__/   \__)"
+    echo ""
+    echo -e "${YELLOW} Termux-os Installer by FutureTonight${RESET}"
+    echo ""
+}
+
+# Error Handling
+handle_error() {
+    echo -e "${RED}Error: $1${RESET}"
+    exit 1
+}
+
+# Update and Install Base Packages
+necessary_setup() {
+    echo -e "${GREEN}Updating packages and installing dependencies...${RESET}"
+    apt update && apt upgrade -y || handle_error "Failed to update packages"
+    for pkg in zsh git figlet toilet ruby wget curl exa; do
+        pkg install "$pkg" -y || handle_error "Failed to install $pkg"
+    done
+    gem install lolcat || handle_error "Failed to install lolcat"
+    echo -e "${GREEN}Base setup complete.${RESET}"
+}
+
+# Configure Zsh and Oh My Zsh
+zsh_setup() {
+    echo -e "${GREEN}Setting up Zsh and Oh My Zsh...${RESET}"
+
+    # Backup existing Zsh configuration
+    [ -f "$HOME/.zshrc" ] && mv "$HOME/.zshrc" "$HOME/.zshrc.bak"
+
+    # Clone Oh My Zsh repository
+    git clone https://github.com/ohmyzsh/ohmyzsh.git "$OH_MY_ZSH_DIR" || handle_error "Failed to clone Oh My Zsh"
+
+    # Copy the template Zsh configuration
+    cp "$OH_MY_ZSH_DIR/templates/zshrc.zsh-template" "$HOME/.zshrc" || handle_error "Failed to copy Zsh configuration"
+
+    echo -e "${GREEN}Zsh setup complete.${RESET}"
+}
+
+# Apply Themes
+apply_themes() {
+    echo -e "${CYAN}Applying themes...${RESET}"
+    mkdir -p "$TERMUX_DIR" || handle_error "Failed to create Termux directory"
+    cp .termux/colors.properties "$TERMUX_DIR/colors.properties" || handle_error "Failed to apply color properties"
+    cp .termux/termux.properties "$TERMUX_DIR/termux.properties" || handle_error "Failed to apply Termux properties"
+    echo -e "${GREEN}Themes applied.${RESET}"
+}
+
+# Backup and Restore Configurations
+backup_restore() {
+    echo -e "${BLUE}1. Backup current configuration"
+    echo -e "2. Restore configuration${RESET}"
+    read -p "Choose an option (1/2): " choice
+    case $choice in
+        1)
+            tar -czvf "$BACKUP_FILE" "$HOME/.zshrc" "$TERMUX_DIR" || handle_error "Failed to create backup"
+            echo -e "${GREEN}Backup saved to $BACKUP_FILE.${RESET}"
+            ;;
+        2)
+            [ -f "$BACKUP_FILE" ] || handle_error "No backup file found"
+            tar -xzvf "$BACKUP_FILE" -C "$HOME" || handle_error "Failed to restore backup"
+            echo -e "${GREEN}Configuration restored from $BACKUP_FILE.${RESET}"
+            ;;
+        *)
+            echo -e "${RED}Invalid option. Returning to menu.${RESET}"
+            ;;
+    esac
+}
+
+# Display Menu
+menu() {
+    banner
+    echo -e "${YELLOW}[1] Necessary Setup${RESET}"
+    echo -e "${YELLOW}[2] Zsh Setup${RESET}"
+    echo -e "${YELLOW}[3] Apply Themes${RESET}"
+    echo -e "${YELLOW}[4] Backup and Restore Configurations${RESET}"
+    echo -e "${YELLOW}[5] Exit${RESET}"
+    read -p "Choose an option: " choice
+    case $choice in
+        1) necessary_setup ;;
+        2) zsh_setup ;;
+        3) apply_themes ;;
+        4) backup_restore ;;
+        5) echo -e "${GREEN}Exiting...${RESET}"; exit 0 ;;
+        *) echo -e "${RED}Invalid option. Please try again.${RESET}"; menu ;;
+    esac
+}
+
+# --------------------
+# Main Execution
+# --------------------
+menu
