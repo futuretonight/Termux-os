@@ -101,7 +101,7 @@ zsh_setup() {
     revert_decision
 }
 
-# Apply Themes
+
 # Apply Themes
 apply_themes() {
     echo -e "${CYAN}Applying themes...${RESET}"
@@ -112,15 +112,31 @@ apply_themes() {
     # Ensure .termux directory exists locally
     mkdir -p .termux || handle_error "Failed to create local .termux directory"
 
+    # Function to download files using wget or curl
+    fetch_file() {
+        local file_name=$1
+        local target_path=$2
+        
+        # Try wget first
+        if command -v wget > /dev/null; then
+            wget -q "$REPO_URL/$file_name" -O "$target_path" || return 1
+        # Fallback to curl
+        elif command -v curl > /dev/null; then
+            curl -s "$REPO_URL/$file_name" -o "$target_path" || return 1
+        else
+            return 1
+        fi
+    }
+
     # Check and fetch missing files dynamically
     if [ ! -f ".termux/colors.properties" ]; then
         echo -e "${YELLOW}Missing 'colors.properties'. Fetching from repository...${RESET}"
-        wget -q "$REPO_URL/colors.properties" -O .termux/colors.properties || handle_error "Failed to fetch 'colors.properties' from repository"
+        fetch_file "colors.properties" ".termux/colors.properties" || handle_error "Failed to fetch 'colors.properties' from repository"
     fi
 
     if [ ! -f ".termux/termux.properties" ]; then
         echo -e "${YELLOW}Missing 'termux.properties'. Fetching from repository...${RESET}"
-        wget -q "$REPO_URL/termux.properties" -O .termux/termux.properties || handle_error "Failed to fetch 'termux.properties' from repository"
+        fetch_file "termux.properties" ".termux/termux.properties" || handle_error "Failed to fetch 'termux.properties' from repository"
     fi
 
     # Proceed with applying themes after ensuring files are present
@@ -134,7 +150,6 @@ apply_themes() {
 
     revert_decision
 }
-
 # Backup and Restore Configurations
 backup_restore() {
     echo -e "${BLUE}1. Backup current configuration"
