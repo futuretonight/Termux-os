@@ -1,4 +1,3 @@
-````markdown name=README.md
 <p align="center">
 <a href="https://futuretonight.github.io/"><img title="Termux OS Theme" src="https://img.shields.io/badge/Termux-OS-green.svg?style=flat-square"></a>
 <a href="https://futuretonight.github.io/"><img title="Version" src="https://img.shields.io/badge/Version-2.0-green.svg?style=flat-square"></a>
@@ -60,6 +59,3 @@ To install the Termux OS Theme Installer, follow these steps:
 This project is built upon the original work by Raj Aryan (H4CK3R). Special thanks for inspiring this project.
 
 ---
-````
-
-This updated README.md file reflects the new features added to the `os.sh` script and provides a clear and professional structure. It also attributes proper credit to the original author while emphasizing your ownership of the theme. Let me know if you'd like further refinements!
