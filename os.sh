@@ -48,6 +48,25 @@ handle_error() {
     exit 1
 }
 
+# Revert Decision
+revert_decision() {
+    echo -e "${YELLOW}Would you like to revert this action and choose another option? (y/n)${RESET}"
+    read -p "Your choice: " revert_choice
+    case $revert_choice in
+        y|Y)
+            echo -e "${GREEN}Reverting the previous action and returning to the main menu...${RESET}"
+            menu
+            ;;
+        n|N)
+            echo -e "${GREEN}Continuing with the current setup...${RESET}"
+            ;;
+        *)
+            echo -e "${RED}Invalid input. Returning to the menu anyway.${RESET}"
+            menu
+            ;;
+    esac
+}
+
 # Update and Install Base Packages
 necessary_setup() {
     echo -e "${GREEN}Updating packages and installing dependencies...${RESET}"
@@ -57,6 +76,7 @@ necessary_setup() {
     done
     gem install lolcat || handle_error "Failed to install lolcat"
     echo -e "${GREEN}Base setup complete.${RESET}"
+    revert_decision
 }
 
 # Configure Zsh and Oh My Zsh
@@ -78,6 +98,7 @@ zsh_setup() {
     fi
 
     echo -e "${GREEN}Zsh setup complete.${RESET}"
+    revert_decision
 }
 
 # Apply Themes
@@ -90,6 +111,7 @@ apply_themes() {
     # Reload Termux settings
     termux-reload-settings || handle_error "Failed to reload Termux settings"
     echo -e "${GREEN}Themes applied.${RESET}"
+    revert_decision
 }
 
 # Backup and Restore Configurations
@@ -111,6 +133,7 @@ backup_restore() {
             echo -e "${RED}Invalid option. Returning to menu.${RESET}"
             ;;
     esac
+    revert_decision
 }
 
 # Display Menu
