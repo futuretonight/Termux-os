@@ -102,15 +102,36 @@ zsh_setup() {
 }
 
 # Apply Themes
+# Apply Themes
 apply_themes() {
     echo -e "${CYAN}Applying themes...${RESET}"
-    mkdir -p "$TERMUX_DIR" || handle_error "Failed to create Termux directory"
+
+    # Define repository URL for fetching missing files
+    REPO_URL="https://raw.githubusercontent.com/futuretonight/Termux-os/master/.termux"
+
+    # Ensure .termux directory exists locally
+    mkdir -p .termux || handle_error "Failed to create local .termux directory"
+
+    # Check and fetch missing files dynamically
+    if [ ! -f ".termux/colors.properties" ]; then
+        echo -e "${YELLOW}Missing 'colors.properties'. Fetching from repository...${RESET}"
+        wget -q "$REPO_URL/colors.properties" -O .termux/colors.properties || handle_error "Failed to fetch 'colors.properties' from repository"
+    fi
+
+    if [ ! -f ".termux/termux.properties" ]; then
+        echo -e "${YELLOW}Missing 'termux.properties'. Fetching from repository...${RESET}"
+        wget -q "$REPO_URL/termux.properties" -O .termux/termux.properties || handle_error "Failed to fetch 'termux.properties' from repository"
+    fi
+
+    # Proceed with applying themes after ensuring files are present
+    mkdir -p "$TERMUX_DIR" || handle_error "Failed to create Termux directory in home"
     cp .termux/colors.properties "$TERMUX_DIR/colors.properties" || handle_error "Failed to apply color properties"
     cp .termux/termux.properties "$TERMUX_DIR/termux.properties" || handle_error "Failed to apply Termux properties"
 
     # Reload Termux settings
     termux-reload-settings || handle_error "Failed to reload Termux settings"
-    echo -e "${GREEN}Themes applied.${RESET}"
+    echo -e "${GREEN}Themes applied successfully.${RESET}"
+
     revert_decision
 }
 
