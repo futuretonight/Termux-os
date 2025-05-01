@@ -1,22 +1,10 @@
 #!/bin/bash
 
-# Clear the screen and display a banner
-clear
-echo -e "\e[31m ________    _____   ______       __    __     __    __   __     __  " 
-echo -e "\e[31m(___  ___)  / ___/  (   __ \      \ \  / /     ) )  ( (  (_ \   / _) " 
-echo -e "\e[96m    ) )    ( (__     ) (__) )     () \/ ()    ( (    ) )   \ \_/ /   " 
-echo -e "\e[96m   ( (      ) __)   (    __/      / _  _ \     ) )  ( (     \   /   "  
-echo -e "\e[94m    ) )    ( (       ) \ \  _    / / \/ \ \   ( (    ) )    / _ \    " 
-echo -e "\e[94m   ( (      \ \___  ( ( \ \_))  /_/      \_\   ) \__/ (   _/ / \ \_  " 
-echo -e "\e[92m   /__\      \____\  )_) \__/  (/          \)  \______/  (__/   \__)" 
-echo -e "\e[91m                                                   ____      _____  " 
-echo -e "\e[91m                                                  / __ \    / ____\ " 
-echo -e "\e[96m                                                 / /  \ \  ( (___   " 
-echo -e "\e[96m                                                ( ()  () )  \___ \  " 
-echo -e "\e[1;91m                     \e[0;31m                 ( ()  () )      ) )" 
-echo -e "\e[1;91m Github\e[96m /\e[1;93m futuretonight          \ \__/ /   ___/ /" 
-echo -e "                                                         \____/   /____/"    
-echo ""
+# --------------------
+# Termux-os Installer
+# --------------------
+# A script for setting up Termux with a Zsh shell, themes, plugins, and other customizations.
+# Dynamically adapts to the user's environment using their .bashrc.
 
 # --------------------
 # Global Variables
@@ -29,10 +17,11 @@ YELLOW="\e[93m"
 WHITE="\e[97m"
 RESET="\e[0m"
 
-# Define directories and files
+# Dynamically determine directories and files
 TERMUX_DIR="$HOME/.termux"
 OH_MY_ZSH_DIR="$HOME/.oh-my-zsh"
 BACKUP_FILE="$HOME/termux_backup.tar.gz"
+BASHRC_FILE="$HOME/.bashrc"
 
 # --------------------
 # Functions
@@ -83,6 +72,11 @@ zsh_setup() {
     # Copy the template Zsh configuration
     cp "$OH_MY_ZSH_DIR/templates/zshrc.zsh-template" "$HOME/.zshrc" || handle_error "Failed to copy Zsh configuration"
 
+    # Append Zsh setup to .bashrc
+    if ! grep -q "exec zsh" "$BASHRC_FILE"; then
+        echo "exec zsh" >> "$BASHRC_FILE"
+    fi
+
     echo -e "${GREEN}Zsh setup complete.${RESET}"
 }
 
@@ -92,6 +86,9 @@ apply_themes() {
     mkdir -p "$TERMUX_DIR" || handle_error "Failed to create Termux directory"
     cp .termux/colors.properties "$TERMUX_DIR/colors.properties" || handle_error "Failed to apply color properties"
     cp .termux/termux.properties "$TERMUX_DIR/termux.properties" || handle_error "Failed to apply Termux properties"
+
+    # Reload Termux settings
+    termux-reload-settings || handle_error "Failed to reload Termux settings"
     echo -e "${GREEN}Themes applied.${RESET}"
 }
 
@@ -119,11 +116,13 @@ backup_restore() {
 # Display Menu
 menu() {
     banner
-    echo -e "${YELLOW}[1] Necessary Setup${RESET}"
-    echo -e "${YELLOW}[2] Zsh Setup${RESET}"
-    echo -e "${YELLOW}[3] Apply Themes${RESET}"
-    echo -e "${YELLOW}[4] Backup and Restore Configurations${RESET}"
-    echo -e "${YELLOW}[5] Exit${RESET}"
+    echo -e "${YELLOW}What would you like to do?${RESET}"
+    echo -e "${YELLOW}[1] Necessary Setup${RESET} - Update and install essential packages for Termux."
+    echo -e "${YELLOW}[2] Zsh Setup${RESET} - Set up Zsh shell and install Oh My Zsh."
+    echo -e "${YELLOW}[3] Apply Themes${RESET} - Customize Termux appearance with themes."
+    echo -e "${YELLOW}[4] Backup and Restore Configurations${RESET} - Backup or restore your Termux configurations."
+    echo -e "${YELLOW}[5] Exit${RESET} - Exit the installer."
+
     read -p "Choose an option: " choice
     case $choice in
         1) necessary_setup ;;
