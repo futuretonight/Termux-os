@@ -102,12 +102,11 @@ zsh_setup() {
 }
 
 
-# Apply Themes
 apply_themes() {
     echo -e "${CYAN}Applying themes...${RESET}"
 
     # Define repository URL for fetching missing files
-    REPO_URL="https://raw.githubusercontent.com/futuretonight/Termux-os/master/.termux"
+    REPO_URL="https://raw.githubusercontent.com/futuretonight/Termux-os/master/.object"
 
     # Ensure .termux directory exists locally
     mkdir -p .termux || handle_error "Failed to create local .termux directory"
@@ -128,21 +127,15 @@ apply_themes() {
         fi
     }
 
-    # Check and fetch missing files dynamically
-    if [ ! -f ".termux/colors.properties" ]; then
-        echo -e "${YELLOW}Missing 'colors.properties'. Fetching from repository...${RESET}"
-        fetch_file "colors.properties" ".termux/colors.properties" || handle_error "Failed to fetch 'colors.properties' from repository"
+    # Check and fetch alternative theme files dynamically
+    if [ ! -f ".object/.h4Ck3r.zsh-theme" ]; then
+        echo -e "${YELLOW}Missing '.h4Ck3r.zsh-theme'. Fetching from repository...${RESET}"
+        fetch_file ".h4Ck3r.zsh-theme" ".object/.h4Ck3r.zsh-theme" || handle_error "Failed to fetch '.h4Ck3r.zsh-theme' from repository"
     fi
 
-    if [ ! -f ".termux/termux.properties" ]; then
-        echo -e "${YELLOW}Missing 'termux.properties'. Fetching from repository...${RESET}"
-        fetch_file "termux.properties" ".termux/termux.properties" || handle_error "Failed to fetch 'termux.properties' from repository"
-    fi
-
-    # Proceed with applying themes after ensuring files are present
+    # Apply the downloaded file as the theme
     mkdir -p "$TERMUX_DIR" || handle_error "Failed to create Termux directory in home"
-    cp .termux/colors.properties "$TERMUX_DIR/colors.properties" || handle_error "Failed to apply color properties"
-    cp .termux/termux.properties "$TERMUX_DIR/termux.properties" || handle_error "Failed to apply Termux properties"
+    cp .object/.h4Ck3r.zsh-theme "$TERMUX_DIR/colors.properties" || handle_error "Failed to apply theme"
 
     # Reload Termux settings
     termux-reload-settings || handle_error "Failed to reload Termux settings"
