@@ -1,93 +1,65 @@
+````markdown name=README.md
 <p align="center">
-<a href="https://h4ck3r0.github.io/"><img title="Made in INDIA" src="https://img.shields.io/badge/MADE%20IN-INDIA-SCRIPT?colorA=%23ff8100&colorB=%23017e40&colorC=%23ff0000&style=for-the-badge"></a>
-</p>
-<p align="center">
-<a href="https://h4ck3r0.github.io/"><img title="Made in INDIA" src="https://img.shields.io/badge/Tool-TermuxOs-green.svg?style=flat-square"></a>
-<a href="https://h4ck3r0.github.io/"><img title="Version" src="https://img.shields.io/badge/Version-1.0-green.svg?style=flat-square"></a>
-<a href="https://h4ck3r0.github.io/"><img title="Maintainence" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=flat-square"></a>
-</p>
-<p align="center">
- <a href=""><img src="https://user-images.githubusercontent.com/46929618/150730092-337cd5de-f376-454a-9418-c884bdb5f5e0.png" width="1000" hight="200"></a>
-</p>
-<p align="center">
-<a href="https://github.com/h4ck3r0"><img title="Github" src="https://img.shields.io/badge/H4CK3R-RAJ-brightgreen?style=for-the-badge&logo=github"></a>
-<a href="https://youtu.be/VDeLnDxVziw"><img title="YouTube" src="https://img.shields.io/badge/YouTube-H4CK3R-red?style=for-the-badge&logo=Youtube"></a>
-</p>
-<p align="center">
-<a href="https://github.com/h4ck3r0"><img title="Language" src="https://img.shields.io/badge/Made%20with-Bash-1f425f.svg?v=103&style=flat-square"></a>
-<a href="https://github.com/h4ck3r0"><img title="Followers" src="https://img.shields.io/github/followers/h4ck3r0?color=blue&style=flat-square"></a>
-<a href="https://github.com/h4ck3r0"><img title="Stars" src="https://img.shields.io/github/stars/h4ck3r0/Termux-os?color=red&style=flat-square"></a>
-<a href="https://github.com/h4ck3r0"><img title="Forks" src="https://img.shields.io/github/forks/h4ck3r0/Termux-os?color=red&style=flat-square"></a>
-<a href="https://github.com/h4ck3r0"><img title="Watching" src="https://img.shields.io/github/watchers/h4ck3r0/Termux-os?label=Watchers&color=blue&style=flat-square"></a>
-<a href="https://github.com/h4ck3r0"><img title="Licence" src="https://img.shields.io/badge/License-GNU-blue.svg?style=flat-square"></a>
+<a href="https://futuretonight.github.io/"><img title="Termux OS Theme" src="https://img.shields.io/badge/Termux-OS-green.svg?style=flat-square"></a>
+<a href="https://futuretonight.github.io/"><img title="Version" src="https://img.shields.io/badge/Version-2.0-green.svg?style=flat-square"></a>
+<a href="https://futuretonight.github.io/"><img title="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=flat-square"></a>
 </p>
 
-## Termux-os
-
-* [+] Based on Zsh Shell !
-
-* [+] Pure Termux Look !
-
-
-## Features
-
-`Added Termux Extra Keys`
-
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/46929618/150729794-17dd4f17-19d0-4028-99b8-c7a88994d145.jpg" width="300" hight="220">
+  <a href=""><img src="https://user-images.githubusercontent.com/46929618/150730092-337cd5de-f376-454a-9418-c884bdb5f5e0.png" width="1000" height="200"></a>
 </p>
 
-`Your Name Banner`
+## Termux OS Theme Installer
+
+**Termux OS** provides a sleek, customizable Zsh shell environment for Termux users. Easy to install and packed with features, it transforms your Termux terminal into a powerful and visually appealing workspace.
+
+### Features
+
+- **Enhanced Zsh Shell**: Includes advanced Zsh setup for a better terminal experience.
+- **Custom Themes**: Apply custom themes instantly with pre-configured `.termux` properties.
+- **Autosuggestions and Highlight**: Enjoy real-time suggestions and syntax highlighting.
+- **Backup and Restore**: Backup your current configuration or restore from a saved backup effortlessly.
+- **Updated Installer**: Includes new features and optimizations for a smoother setup experience.
+- **Custom Banner**: Show off your style with a personalized terminal banner.
+- **Advanced Key Mapping**: Added Termux extra keys for better usability.
+
+### Installation
+
+To install the Termux OS Theme Installer, follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/futuretonight/Termux-os
+   ```
+2. Navigate to the repository directory:
+   ```bash
+   cd Termux-os
+   ```
+3. Run the installation script:
+   ```bash
+   bash os.sh
+   ```
+
+### Screenshots
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/46929618/150729923-9f0415aa-d0fd-46c7-86cb-1ef65affffcb.jpg" width="300" hight="220">
+  <img src="https://user-images.githubusercontent.com/46929618/150729794-17dd4f17-19d0-4028-99b8-c7a88994d145.jpg" width="300" height="220">
+  <img src="https://user-images.githubusercontent.com/46929618/150729435-7eea5d74-8474-427a-9ada-a8d50da91136.jpg" width="300" height="220">
+  <img src="https://user-images.githubusercontent.com/46929618/150729854-a09be75c-5e3a-4a21-85b4-71191ee42bd2.jpg" width="300" height="220">
 </p>
 
-`Added Own made Advance zsh theme`
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/46929618/150729435-7eea5d74-8474-427a-9ada-a8d50da91136.jpg" width="300" hight="220">
-</p>
+### Updated Features in Version 2.0
 
-`Added Highlight / Autosuggestion`
+- **Improved Installation Process**: Streamlined and simplified for faster setup.
+- **Backup & Restore Configuration**: Automate saving and restoring your setup.
+- **Integrated Custom Themes**: Instantly apply and modify themes.
+- **Dependency Management**: Ensures all required packages are installed efficiently.
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/46929618/150729854-a09be75c-5e3a-4a21-85b4-71191ee42bd2.jpg" width="300" hight="220">
-</p>
+### Credits
 
-## Photos Of Theme
+This project is built upon the original work by Raj Aryan (H4CK3R). Special thanks for inspiring this project.
 
+---
+````
 
-
-
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/46929618/150729988-7c0c2a39-fe78-4dc6-8174-1a220e0ee1e5.jpg" width="300" hight="220">
-</p>
-
-## Installation
-
-
-
-* `git clone https://github.com/h4ck3r0/Termux-os`
-
-* `cd Termux-os`
-
-* `bash os.sh`
-
-#### Full Process : [Video](https://youtu.be/VSG2glraCws) 
-
-## [Read More](https://www.h4ck3r.me/how-to-install-theme-in-termux-in-one-click/) 
-
-## Credits
-
-* [+] Credits to Oh My Zsh !
-* [+] H4Ck3R ( Raj Aryan )
-
-## CONNECT WITH US :
-<a href="https://www.buymeacoffee.com/h4ck3r" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
-
-<a href="https://github.com/h4ck3r0"><img title="Github" src="https://img.shields.io/badge/H4Ck3R-Raj-brightgreen?style=for-the-badge&logo=github"></a>
-[![Instagram](https://img.shields.io/badge/INSTAGRAM-FOLLOW-red?style=for-the-badge&logo=instagram)](https://www.instagram.com/h4ck3r0_official?igsh=NzN1NTNucWhjOXJp)
-[![Instagram](https://img.shields.io/badge/WEBSITE-VISIT-yellow?style=for-the-badge&logo=blogger)](https://www.h4ck3r.me)
-[![Instagram](https://img.shields.io/badge/TELEGRAM-CHANNEL-red?style=for-the-badge&logo=telegram)](https://t.me/h4ck3r_group)
-<a href="https://rebrand.ly/7elzgww"><img title="YouTube" src="https://img.shields.io/badge/YouTube-H4Ck3R-red?style=for-the-badge&logo=Youtube"></a>
-https://www.h4ck3r.me/how-to-install-theme-in-termux-in-one-click/
+This updated README.md file reflects the new features added to the `os.sh` script and provides a clear and professional structure. It also attributes proper credit to the original author while emphasizing your ownership of the theme. Let me know if you'd like further refinements!
